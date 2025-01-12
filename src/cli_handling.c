@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 void showHelp();
+void showVersion();
 char* getArgument(char* arg_val[]);
 int modeSelection(int arg_count,char *arg_val[]){
     if (arg_count < 2) {
@@ -8,10 +9,15 @@ int modeSelection(int arg_count,char *arg_val[]){
         showHelp();
         return -1;
     }
-    if (strcmp(arg_val[1], "-h") == 0) {
+    if (strcmp(arg_val[1], "--h") == 0 || strcmp(arg_val[1], "--help") == 0) {
         showHelp();
         return 0;
-    } else if (strcmp(arg_val[1], "-c") == 0) {
+    } 
+    if (strcmp(arg_val[1], "--v")== 0|| strcmp(arg_val[1], "--version")  == 0) {
+        showVersion();
+        return 0;
+    }
+    else if (strcmp(arg_val[1], "-c") == 0) {
         if (arg_count == 3) {
             return 1;
         } else {
@@ -33,14 +39,17 @@ int modeSelection(int arg_count,char *arg_val[]){
     }
 }
 void showHelp() {
-    printf("Usage: ./prog_name [option] [string]\n");
+    printf("Usage: ./runLengthEncoding [option] [string]\n");
     printf("Options:\n");
-    printf("  -h            Show this help menu.\n");
-    printf("  -c <string>   Compress the given string.\n");
-    printf("  -d <string>   Decompress the given string.\n");
+    printf("  --h            Show this help menu.\n");
+    printf("  --v            Show the current version.\n");
+    printf("  -c <string>    Compress the given string.\n");
+    printf("  -d <string>    Decompress the given string.\n");
 }
     
-
+void showVersion(){
+    printf("Version: 1.0\n");
+}
 
 char* getArgument(char* arg_val[]){
     return arg_val[2];
