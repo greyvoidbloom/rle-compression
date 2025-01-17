@@ -1,6 +1,6 @@
 # rle-compression
 
-Program to compress and extract strings using Run Length 
+Program to compress and extract strings using Run Length Encoding
 
 # Documentation
 This is an implementation of RLE, can do both compression , and decompression
